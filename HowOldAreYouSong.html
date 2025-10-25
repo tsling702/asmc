@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes it mobile-friendly -->
+  <title>Hello Song</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 10px; /* Prevent content from touching screen edges */
+    }
+
+    .player-container {
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 100%;
+      max-width: 400px; /* Caps size for large screens */
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    audio {
+      width: 100%;
+      outline: none;
+    }
+
+    /* Smaller text on very small screens */
+    @media (max-width: 400px) {
+      h2 {
+        font-size: 16px;
+      }
+      .player-container {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="player-container">
+    <h2>How Old Are You Song</h2>
+    <audio controls>
+      <source src="music/HowOldAreYouSong.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+</body>
+</html>
