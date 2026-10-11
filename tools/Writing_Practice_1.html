@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>写汉字 Writing exercises</title>
-    <!-- LXGW WenKai provides a Kai-style Chinese font on phones that lack a built-in KaiTi font. -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai&display=swap" rel="stylesheet">
-    <style>
+<style>
+        /* Embedded Kai-style Chinese font: works offline and looks consistent across devices. */
+        @font-face {
+            font-family: 'BundledKaiti';
+            src: url(data:font/woff2;base64,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) format('woff2');
+            font-style: normal;
+            font-weight: 400;
+            font-display: block;
+        }
+
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; user-select: none; }
         body {
             margin: 0; min-height: 100vh; background: #f7f3e8;
@@ -25,7 +30,7 @@
             text-align: center; font-size: 1.7rem; font-weight: 400;
             color: #4e3e2e; margin: 0 0 6px 0; letter-spacing: 1px; line-height: 1.3;
         }
-        h1 .cn { font-family: 'KaiTi', '楷体', 'STKaiti', '华文楷体', 'LXGW WenKai', 'Noto Serif SC', serif; }
+        h1 .cn { font-family: 'BundledKaiti', 'KaiTi', '楷体', 'STKaiti', '华文楷体', 'Noto Serif SC', serif; }
         h1 .en { font-size: 1.3rem; color: #8e7a66; display: block; margin-top: 2px; }
         .subhead {
             text-align: center; font-size: 0.9rem; color: #a18e78;
@@ -37,7 +42,7 @@
         }
         .character-display span {
             font-size: 3.8rem; line-height: 1.2; color: #4e3e2e; font-weight: 400;
-            font-family: 'KaiTi', '楷体', 'STKaiti', '华文楷体', 'LXGW WenKai', 'Noto Serif SC', serif;
+            font-family: 'BundledKaiti', 'KaiTi', '楷体', 'STKaiti', '华文楷体', 'Noto Serif SC', serif;
             text-shadow: 2px 2px 0 rgba(0,0,0,0.02);
         }
         .character-display .star {
@@ -73,7 +78,7 @@
             position: relative; background: #fff3e6; border: 1.5px solid #dccfbe;
             color: #4e3e2e; font-size: 1.6rem; width: 62px; height: 62px;
             border-radius: 24px; display: flex; align-items: center; justify-content: center;
-            font-family: 'KaiTi', '楷体', 'STKaiti', '华文楷体', 'LXGW WenKai', 'Noto Serif SC', serif;
+            font-family: 'BundledKaiti', 'KaiTi', '楷体', 'STKaiti', '华文楷体', 'Noto Serif SC', serif;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
             transition: all 0.1s ease; touch-action: manipulation; cursor: pointer;
         }
@@ -340,7 +345,7 @@
         let debugVisible = false;
         let debugTimer = null;
 
-        const KAI_FONT_STACK = '"KaiTi", "楷体", "STKaiti", "华文楷体", "LXGW WenKai", "Noto Serif SC", "Songti SC", serif';
+        const KAI_FONT_STACK = '"BundledKaiti", "KaiTi", "楷体", "STKaiti", "华文楷体", "Noto Serif SC", "Songti SC", serif';
         const COMP_SIZE = 200;
 
         // ---------- Canvas sizing ----------
@@ -932,5 +937,177 @@
         }, { passive: false });
     })();
 </script>
-</body>
+<!-- Bundled font license (AR PL KaitiM GB; subsetted WOFF2):
+This package was debianized by Anthony Fok <foka@debian.org>
+on Mon, 13 Dec 1999 01:17:51 -0700
+
+It was downloaded from
+    ftp://linux.tmtc.edu.tw/pub/arphic/fonts/gkai00mp.ttf
+
+Author/Designer:
+    Arphic Technology Co., Ltd.
+    http://www.arphic.com.tw/
+    
+Copyright:
+    (Copied from 'license/english/ARPHICPL.TXT'.
+     See 'license/big5/ARPHICPL.TXT' or 'license/gb/ARPHICPL.TXT'
+     for the Chinese version.)
+
+========================================================================
+
+ARPHIC PUBLIC LICENSE
+
+Copyright (C) 1999 Arphic Technology Co., Ltd.
+11Fl. No.168, Yung Chi Rd., Taipei, 110 Taiwan
+All rights reserved except as specified below.
+
+Everyone is permitted to copy and distribute verbatim copies of this
+license document, but changing it is forbidden.
+
+Preamble
+
+   The licenses for most software are designed to take away your
+   freedom to share and change it.  By contrast, the ARPHIC PUBLIC
+   LICENSE specifically permits and encourages you to use this
+   software, provided that you give the recipients all the rights that
+   we gave you and make sure they can get the modifications of this
+   software.
+
+Legal Terms
+
+0. Definitions:
+   Throughout this License, "Font" means the TrueType fonts "AR PL
+   Mingti2L Big5", "AR PL KaitiM Big5" (BIG-5 character set) and "AR PL
+   SungtiL GB", "AR PL KaitiM GB" (GB character set) which are
+   originally distributed by Arphic, and the derivatives of those fonts
+   created through any modification including modifying glyph,
+   reordering glyph, converting format, changing font name, or
+   adding/deleting some characters in/from glyph table.
+
+   "PL" means "Public License".
+
+   "Copyright Holder" means whoever is named in the copyright or
+   copyrights for the Font.
+
+   "You" means the licensee, or person copying, redistributing or
+   modifying the Font.
+
+   "Freely Available" means that you have the freedom to copy or modify
+   the Font as well as redistribute copies of the Font under the same
+   conditions you received, not price.  If you wish, you can charge for
+   this service.
+
+1. Copying & Distribution
+   You may copy and distribute verbatim copies of this Font in any
+   medium, without restriction, provided that you retain this license
+   file (ARPHICPL.TXT) unaltered in all copies.
+
+2. Modification
+   You may otherwise modify your copy of this Font in any way,
+   including modifying glyph, reordering glyph, converting format,
+   changing font name, or adding/deleting some characters in/from glyph
+   table, and copy and distribute such modifications under the terms of
+   Section 1 above, provided that the following conditions are met:
+
+   a) You must insert a prominent notice in each modified file stating
+      how and when you changed that file.
+
+   b) You must make such modifications Freely Available as a whole to
+      all third parties under the terms of this License, such as by
+      offering access to copy the modifications from a designated
+      place, or distributing the modifications on a medium customarily
+      used for software interchange.
+
+   c) If the modified fonts normally reads commands interactively when
+      run, you must cause it, when started running for such interactive
+      use in the most ordinary way, to print or display an announcement
+      including an appropriate copyright notice and a notice that there
+      is no warranty (or else, saying that you provide a warranty) and
+      that users may redistribute the Font under these conditions, and
+      telling the user how to view a copy of this License.
+
+   These requirements apply to the modified work as a whole.  If
+   identifiable sections of that work are not derived from the Font,
+   and can be reasonably considered independent and separate works in
+   themselves, then this License and its terms, do not apply to those
+   sections when you distribute them as separate works.  Therefore,
+   mere aggregation of another work not based on the Font with the Font
+   on a volume of a storage or distribution medium does not bring the
+   other work under the scope of this License.
+
+3. Condition Subsequent
+   You may not copy, modify, sublicense, or distribute the Font except
+   as expressly provided under this License.  Any attempt otherwise to
+   copy, modify, sublicense or distribute the Font will automatically
+   retroactively void your rights under this License.  However, parties
+   who have received copies or rights from you under this License will
+   keep their licenses valid so long as such parties remain in full
+   compliance.
+
+4. Acceptance
+   You are not required to accept this License, since you have not
+   signed it.  However, nothing else grants you permission to copy,
+   modify, sublicense or distribute the Font.  These actions are
+   prohibited by law if you do not accept this License.  Therefore, by
+   copying, modifying, sublicensing or distributing the Font, you
+   indicate your acceptance of this License and all its terms and
+   conditions.
+
+5. Automatic Receipt
+   Each time you redistribute the Font, the recipient automatically
+   receives a license from the original licensor to copy, distribute or
+   modify the Font subject to these terms and conditions.  You may not
+   impose any further restrictions on the recipients' exercise of the
+   rights granted herein.  You are not responsible for enforcing
+   compliance by third parties to this License.
+
+6. Contradiction
+   If, as a consequence of a court judgment or allegation of patent
+   infringement or for any other reason (not limited to patent issues),
+   conditions are imposed on you (whether by court order, agreement or
+   otherwise) that contradict the conditions of this License, they do
+   not excuse you from the conditions of this License.  If you cannot
+   distribute so as to satisfy simultaneously your obligations under
+   this License and any other pertinent obligations, then as a
+   consequence you may not distribute the Font at all.  For example, if
+   a patent license would not permit royalty-free redistribution of the
+   Font by all those who receive copies directly or indirectly through
+   you, then the only way you could satisfy both it and this License
+   would be to refrain entirely from distribution of the Font.
+
+   If any portion of this section is held invalid or unenforceable
+   under any particular circumstance, the balance of the section is
+   intended to apply and the section as a whole is intended to apply in
+   other circumstances.
+
+7. NO WARRANTY
+   BECAUSE THE FONT IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY
+   FOR THE FONT, TO THE EXTENT PERMITTED BY APPLICABLE LAW.  EXCEPT
+   WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS OR OTHER
+   PARTIES PROVIDE THE FONT "AS IS" WITHOUT WARRANTY OF ANY KIND,
+   EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+   PURPOSE.  THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE
+   FONT IS WITH YOU.  SHOULD THE FONT PROVE DEFECTIVE, YOU ASSUME THE
+   COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
+
+8. DAMAGES WAIVER
+   UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING, IN NO
+   EVENT WILL ANY COPYRIGHTT HOLDERS, OR OTHER PARTIES WHO MAY COPY,
+   MODIFY OR REDISTRIBUTE THE FONT AS PERMITTED ABOVE, BE LIABLE TO YOU
+   FOR ANY DIRECT, INDIRECT, CONSEQUENTIAL, INCIDENTAL, SPECIAL OR
+   EXEMPLARY DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE
+   FONT (INCLUDING BUT NOT LIMITED TO PROCUREMENT OF SUBSTITUTE GOODS
+   OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+   INTERRUPTION), EVEN IF SUCH HOLDERS OR OTHER PARTIES HAVE BEEN
+   ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+========================================================================
+
+All the other scripts and control files for building and installing
+this package Debian GNU/Linux are under the GNU General Public License
+(GPL) version 2 or later, which may be found in the file
+'/usr/share/common-licenses/GPL'.
+
+--></body>
 </html>
