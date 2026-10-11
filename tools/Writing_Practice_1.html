@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>写汉字 Writing exercises</title>
+    <!-- LXGW WenKai provides a Kai-style Chinese font on phones that lack a built-in KaiTi font. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; user-select: none; }
         body {
@@ -21,7 +25,7 @@
             text-align: center; font-size: 1.7rem; font-weight: 400;
             color: #4e3e2e; margin: 0 0 6px 0; letter-spacing: 1px; line-height: 1.3;
         }
-        h1 .cn { font-family: 'KaiTi', '楷体', 'STKaiti', '华文楷体', 'Noto Serif SC', serif; }
+        h1 .cn { font-family: 'KaiTi', '楷体', 'STKaiti', '华文楷体', 'LXGW WenKai', 'Noto Serif SC', serif; }
         h1 .en { font-size: 1.3rem; color: #8e7a66; display: block; margin-top: 2px; }
         .subhead {
             text-align: center; font-size: 0.9rem; color: #a18e78;
@@ -33,7 +37,7 @@
         }
         .character-display span {
             font-size: 3.8rem; line-height: 1.2; color: #4e3e2e; font-weight: 400;
-            font-family: 'KaiTi', '楷体', 'STKaiti', '华文楷体', 'Noto Serif SC', serif;
+            font-family: 'KaiTi', '楷体', 'STKaiti', '华文楷体', 'LXGW WenKai', 'Noto Serif SC', serif;
             text-shadow: 2px 2px 0 rgba(0,0,0,0.02);
         }
         .character-display .star {
@@ -69,7 +73,7 @@
             position: relative; background: #fff3e6; border: 1.5px solid #dccfbe;
             color: #4e3e2e; font-size: 1.6rem; width: 62px; height: 62px;
             border-radius: 24px; display: flex; align-items: center; justify-content: center;
-            font-family: 'KaiTi', '楷体', 'STKaiti', '华文楷体', 'Noto Serif SC', serif;
+            font-family: 'KaiTi', '楷体', 'STKaiti', '华文楷体', 'LXGW WenKai', 'Noto Serif SC', serif;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
             transition: all 0.1s ease; touch-action: manipulation; cursor: pointer;
         }
@@ -336,7 +340,7 @@
         let debugVisible = false;
         let debugTimer = null;
 
-        const KAI_FONT_STACK = '"KaiTi", "楷体", "STKaiti", "华文楷体", "Noto Serif SC", "Songti SC", serif';
+        const KAI_FONT_STACK = '"KaiTi", "楷体", "STKaiti", "华文楷体", "LXGW WenKai", "Noto Serif SC", "Songti SC", serif';
         const COMP_SIZE = 200;
 
         // ---------- Canvas sizing ----------
@@ -917,7 +921,11 @@
             strokeCountSpan.textContent = '0';
         }
 
-        window.addEventListener('load', () => { setTimeout(init, 20); });
+        window.addEventListener('load', () => {
+            // Wait for the downloadable Kai-style font before rendering canvas text.
+            const fontReady = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+            fontReady.finally(() => setTimeout(init, 20));
+        });
 
         document.body.addEventListener('touchmove', (e) => {
             if (e.target.closest('.canvas-wrapper')) e.preventDefault();
